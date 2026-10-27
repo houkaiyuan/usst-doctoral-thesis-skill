@@ -1,0 +1,6 @@
+interface:
+  display_name: "上海理工大学博士论文"
+  short_description: "依据上理工规范处理博士论文，支持Word排版、LaTeX工程生成及编译核验"
+  default_prompt: "使用 $usst-doctoral-thesis，按学校规范整理我的博士论文；需要LaTeX时生成源码工程、编译PDF并说明待补事项。"
+policy:
+  allow_implicit_invocation: true

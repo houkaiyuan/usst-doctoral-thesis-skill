@@ -1,0 +1,44 @@
+% !TEX program = xelatex
+% Editable working template, not an official USST cover or a completed thesis.
+\documentclass[UTF8,12pt,twoside,openany,fontset=none]{ctexbook}
+\usepackage{usst-thesis}
+\newcommand{\thesistitle}{@@TITLE@@}
+
+\begin{document}
+\hypersetup{pageanchor=false}
+\begin{titlepage}
+  \centering
+  \vspace*{2cm}
+  {\heiti\fontsize{18bp}{24bp}\selectfont 上海理工大学博士论文\par}
+  \vspace{1cm}
+  {\heiti\fontsize{18bp}{24bp}\selectfont \thesistitle\par}
+  \vspace{2cm}
+  LaTeX 工作底稿\par
+  作者、学科、导师、日期待填写\par
+  \vfill
+  本页不是学校正式封面。提交前按博士官方模板替换，\par
+  并补入中英文内封面、版权授权书及声明。\par
+\end{titlepage}
+
+\frontmatter
+% Roman front matter and body reset are working choices, not explicit school rules.
+\pagenumbering{Roman}
+\hypersetup{pageanchor=true}
+\usstfrontchapter{摘要}
+待填写中文摘要。请依据真实研究说明目的、方法、主要结果和结论，按规范达到不少于500字；不以模板文字充当研究内容。
+\par\vspace{12bp}
+{\fontsize{14bp}{20bp}\selectfont\bfseries\noindent 关键词：待填词一\quad 待填词二\quad 待填词三\par}
+
+\usstfrontchapter{ABSTRACT}
+To be completed from the author's actual research. The abstract must satisfy the applicable minimum word count. Replace this placeholder before submission.
+\par\vspace{12bp}
+{\fontsize{14bp}{20bp}\selectfont\bfseries\noindent Keywords: keyword one, keyword two, keyword three\par}
+
+\tableofcontents
+\mainmatter
+\input{chapters/chapter01}
+% Add chapters according to the actual research, rather than a fixed chapter count.
+\input{references}
+% Optional: \usstappendix \chapter{附录题名} ...
+% Add the author's actual achievements and acknowledgements when supplied.
+\end{document}

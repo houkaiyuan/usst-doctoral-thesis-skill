@@ -1,0 +1,44 @@
+% Do not distribute proprietary fonts. Use locally licensed font files or installed fonts.
+\newif\ifusstfontsubstitution
+\usstfontsubstitutionfalse
+\IfFileExists{fonts/Simsun.ttc}{%
+  \setCJKmainfont[Path=fonts/,AutoFakeBold=2]{Simsun.ttc}
+  \setCJKfamilyfont{zhsong}[Path=fonts/,AutoFakeBold=2]{Simsun.ttc}
+}{%
+  \IfFontExistsTF{SimSun}{%
+    \setCJKmainfont[AutoFakeBold=2]{SimSun}
+    \setCJKfamilyfont{zhsong}[AutoFakeBold=2]{SimSun}
+  }{%
+    \usstfontsubstitutiontrue
+    \setCJKmainfont[BoldFont=FandolSong-Bold.otf]{FandolSong-Regular.otf}
+    \setCJKfamilyfont{zhsong}[BoldFont=FandolSong-Bold.otf]{FandolSong-Regular.otf}
+  }%
+}
+\IfFileExists{fonts/SimHei.ttf}{\setCJKfamilyfont{zhhei}[Path=fonts/]{SimHei.ttf}}{%
+  \IfFontExistsTF{SimHei}{\setCJKfamilyfont{zhhei}{SimHei}}{%
+    \usstfontsubstitutiontrue
+    \setCJKfamilyfont{zhhei}{FandolHei-Regular.otf}}}
+% Local Times files are used only if all four faces are present.
+\newif\ifusstlocaltimes
+\usstlocaltimestrue
+\IfFileExists{fonts/times.ttf}{}{\usstlocaltimesfalse}
+\IfFileExists{fonts/timesbd.ttf}{}{\usstlocaltimesfalse}
+\IfFileExists{fonts/timesi.ttf}{}{\usstlocaltimesfalse}
+\IfFileExists{fonts/timesbi.ttf}{}{\usstlocaltimesfalse}
+\ifusstlocaltimes
+  \setmainfont[Path=fonts/,BoldFont=timesbd.ttf,ItalicFont=timesi.ttf,BoldItalicFont=timesbi.ttf]{times.ttf}
+\else
+  \IfFontExistsTF{Times New Roman}{\setmainfont{Times New Roman}}{%
+    \usstfontsubstitutiontrue
+    \setmainfont[BoldFont=texgyretermes-bold.otf,ItalicFont=texgyretermes-italic.otf,BoldItalicFont=texgyretermes-bolditalic.otf]{texgyretermes-regular.otf}}
+\fi
+\renewcommand{\CJKttdefault}{zhsong}
+\renewcommand{\CJKsfdefault}{zhhei}
+\providecommand{\songti}{\CJKfamily{zhsong}}
+\providecommand{\heiti}{\CJKfamily{zhhei}}
+\ifusstfontsubstitution
+  \PackageWarningNoLine{usst-thesis}{Substitute fonts active. Draft preview only; font compliance is not verified}
+  \typeout{USST-FONT-STATUS: SUBSTITUTE}
+\else
+  \typeout{USST-FONT-STATUS: REQUESTED-FONTS}
+\fi
